@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Note For You ✨</title>
+    <style>
+        :root {
+            --primary-color: #d63384;
+            --bg-color: #fff0f5;
+            --card-bg: #ffffff;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe6eb 0%, #ffd1dc 100%);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.15);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px;
+            border: 2px solid #ffccd5;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+        }
+
+        button:hover {
+            background-color: #c2185b;
+            transform: translateY(-2px);
+        }
+
+        .poem-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #555;
+            text-align: left;
+            white-space: pre-line;
+            background: #fff8f9;
+            padding: 20px;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .final-message {
+            font-size: 18px;
+            font-weight: bold;
+            color: #880e4f;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .heart-rose-container {
+            margin-top: 30px;
+            font-size: 80px;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Viewing Answers Section for You */
+        .answers-view {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #fce4ec;
+            border-radius: 10px;
+            text-align: left;
+            display: none;
+            border: 1px dashed var(--primary-color);
+        }
+        
+        .answers-view h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .answers-view p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+  
+ <!-- Step 1: Question 1 -->
+<div id="step1" class="step active">
+  <h2>WHO AM I TO YOU? 💞</h2>
+  <textarea id="answer1" placeholder="Type your response here..."></textarea><br>
+  <button type="button" onclick="sendQuestion1()">Next ✨</button>
+</div>
+
+<!-- Step 2: Question 2 -->
+<div id="step2" class="step">
+  <h2>HOW MUCH DO I MEAN TO YOU? 💖</h2>
+  <textarea id="answer2" placeholder="Type your response here..."></textarea><br>
+  <button type="button" onclick="sendQuestion2()">Submit ✨</button>
+</div>
+    
+</>
+    <!-- Step 3: Transition -->
+    <div id="step3" class="step">
+        <h2>I HAVE SOMETHING FOR YOU... 🎁</h2>
+        <p>Press the button below to open your message.</p>
+        <button onclick="nextStep(3)">ENTER 💌</button>
+    </div>
+
+    <!-- Step 4: Final Romantic Display -->
+    <div id="step4" class="step">
+        <div class="poem-text">
+
+Praveena, I am so truly sorry for what I’ve done. I want to make this up to you and do whatever it takes to ensure it never happens again. 
+
+I wish I could be there in person right now to say this to your face, look into your eyes, and tell you how much you mean to me.
+
+Please know how deeply I love you I don't ever want to lose you, and I want to build a lasting future with you. 
+
+I hope this brings a little smile to your face and brightens your day, even just a bit. Love you so much, syg.
+
+        </div>
+
+        <div class="final-message">
+           I LOVE YOU SO MUCH BABY MA , YOUR THE LOVE OF MY LIFE PRAVEENA  ❤️
+        </div>
+
+        <!-- Big Red Heart with Rose -->
+        <div class="heart-rose-container">
+            ❤️🌹
+        </div>
+
+        <!-- Hidden section to view her answers (Saved in local storage) -->
+        <div id="answersView" class="answers-view">
+            <h3>🔒 Recorded Answers (For Your Eyes Only):</h3>
+            <p><strong>1. Who am I to you?</strong> <br><span id="viewAns1"></span></p>
+            <p><strong>2. How much do I mean to you?</strong> <br><span id="viewAns2"></span></p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function nextStep(currentStep) {
+        // Validate inputs before moving forward
+        if (currentStep === 1) {
+            let ans1 = document.getElementById('answer1').value.trim();
+            if (ans1 === "") { alert("Please type an answer first! 😊"); return; }
+            localStorage.setItem("romantic_ans1", ans1);
+        } 
+        else if (currentStep === 2) {
+            let ans2 = document.getElementById('answer2').value.trim();
+            if (ans2 === "") { alert("Please type an answer first! 😊"); return; }
+            localStorage.setItem("romantic_ans2", ans2);
+        }
+
+        // Hide current step
+        document.getElementById('step' + currentStep).classList.remove('active');
+
+        // Show next step
+        let next = currentStep + 1;
+        document.getElementById('step' + next).classList.add('active');
+
+        // If reaching the final step, load the saved responses into the hidden view block
+        if (next === 4) {
+            document.getElementById('viewAns1').innerText = localStorage.getItem("romantic_ans1");
+            document.getElementById('viewAns2').innerText = localStorage.getItem("romantic_ans2");
+            
+            // NOTE: Uncomment the line below if you want the recorded answers to display at the bottom of the final screen!
+            // document.getElementById('answersView').style.display = 'block';
+        }
+  }
+
+  function sendQuestion1() {
+    let ans1 = document.getElementById('answer1').value.trim();
+    if (ans1 === "") { alert("Please type an answer first! 😊"); return; }
+
+    fetch("https://formspree.io/f/mnjeezna", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ "WHO AM I TO YOU?": ans1 })
+    });
+
+    nextStep(1);
+  }
+
+  function sendQuestion2() {
+    let ans2 = document.getElementById('answer2').value.trim();
+    if (ans2 === "") { alert("Please type an answer first! 😊"); return; }
+
+    fetch("https://formspree.io/f/mnjeezna", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ "HOW MUCH DO I MEAN TO YOU?": ans2 })
+    });
+
+    nextStep(2);
+  }
+</script>
+
+
+</body>
+</html>
